@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Helps the browser identify support for mobile applications -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Title on the browser tab -->
+    <title>Objek Pariwisata di Kota Jakarta Utara</title>
+    <!-- Leaflet CSS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <!-- Leaflet JavaScript Library -->
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <!-- Style for the fullscreen map display -->
+    <style>
+      html,
+      body,
+      #map {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HTML Block to display the map -->
+    <div id="map"></div>
+    <script>
+      /* Initial Map */
+      var map = L.map("map").setView([-6.126601, 106.842958], 10);
+
+      /* Tile Basemap */
+      var basemap0 = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <ahref="http://www.openstreetmap.org/copyright" >OpenStreetMap</a>',
+      });
+
+      var Esri_WorldImagery = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{ x } ", {
+        attribution: "Tiles &copy;Arya Dirgantara Alfiqhri &mdash; 23611103 Statistics Program Study at Universitas Islam Indonesia",
+      });
+      var OpenTopoMap = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+        maxZoom: 17,
+        attribution:
+          'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+      });
+
+      Esri_WorldImagery.addTo(map);
+
+      var baseMaps = {
+        "Open Street Map": basemap0,
+        "Open Topo Map": OpenTopoMap,
+        "Esri WorldImagery": Esri_WorldImagery,
+      };
+
+      var Layers = {};
+      var layerControl = L.control.layers(baseMaps, Layers, { collapsed: false });
+      layerControl.addTo(map);
+
+      var customIcon = L.icon({
+        iconUrl: "camera.png",
+        iconSize: [40, 40],
+      });
+
+      // Marker 1
+      var marker1 = L.marker([-6.1137292, 106.7950497], { icon: customIcon });
+      marker1.bindPopup("<b>Taman Waduk Pluit</b><br>Alamat: 6, Jl. Pluit Timur Raya No.12, RT.6/RW.5, Pluit, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14450, Indonesia");
+      marker1.addTo(map);
+      marker1.bindTooltip("Taman Waduk Pluit");
+
+      // Marker 2
+      var marker2 = L.marker([-6.1329076, 106.7837762], { icon: customIcon });
+      marker2.bindPopup("<b>Penjaringan City Forest Park</b><br>Alamat: Jl. Kepanduan II, RT.7/RW.16, Pejagalan, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14450, Indonesia");
+      marker2.addTo(map);
+      marker2.bindTooltip("Penjaringan City Forest Park");
+
+      // Marker 3
+      var marker3 = L.marker([-6.1064903, 106.7368887], { icon: customIcon });
+      marker3.bindPopup("<b>Taman Wisata Alam Angke</b><br>Alamat: Jl. Garden House, Kamal Muara, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14470, Indonesia");
+      marker3.addTo(map);
+      marker3.bindTooltip("Taman Wisata Alam Angke");
+
+      // Marker 4
+      var marker4 = L.marker([-6.1256079, 106.8465549], { icon: customIcon });
+      marker4.bindPopup("<b>Taman Impian Ancol</b><br>Alamat: VRGV+WGR, 10, RT.1/RW.10, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker4.addTo(map);
+      marker4.bindTooltip("Taman Impian Ancol");
+
+      // Marker 5
+      var marker5 = L.marker([-6.1459804, 106.8776772], { icon: customIcon });
+      marker5.bindPopup("<b>Danau Sunter</b><br>Alamat: VV3H+J33, Danau Sunter, RT.11/RW.11, Sunter Jaya, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14360, Indonesia");
+      marker5.addTo(map);
+      marker5.bindTooltip("Danau Sunter");
+
+      // Marker 6
+      var marker6 = L.marker([-6.1264924, 106.8389517], { icon: customIcon });
+      marker6.bindPopup("<b>Pasar Seni</b><br>Alamat: Taman Impian Jaya, Jl. Lodan timur No.7, RW.10, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker6.addTo(map);
+      marker6.bindTooltip("Pasar Seni");
+
+      // Marker 7
+      var marker7 = L.marker([-6.1270318, 106.8725706], { icon: customIcon });
+      marker7.bindPopup("<b>Danau Cincin</b><br>Alamat: Jl. Warakas VI Gg. 17 No.6, RT.8/RW.5, Papanggo, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14340, Indonesia");
+      marker7.addTo(map);
+      marker7.bindTooltip("Danau Cincin");
+
+      // Marker 8
+      var marker8 = L.marker([-6.1252747, 106.8335569], { icon: customIcon });
+      marker8.bindPopup("<b>Taman Impian Jaya Ancol</b><br>Alamat: Jl. Lodan Timur No.7, RT.14/RW.10, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker8.addTo(map);
+      marker8.bindTooltip("Taman Impian Jaya Ancol");
+
+      // Marker 9
+      var marker9 = L.marker([-6.0907529, 106.7429807], { icon: customIcon });
+      marker9.bindPopup("<b>Urban Farm PIK</b><br>Alamat: Kawasan Pantai Maju, Jl. The Golf Island Boulevard Kel, Kamal Muara, Kec. Penjaringan, Daerah Khusus Ibukota Jakarta 14460, Indonesia");
+      marker9.addTo(map);
+      marker9.bindTooltip("Urban Farm PIK");
+
+      // Marker 10
+      var marker10 = L.marker([-6.1243125, 106.8358125], { icon: customIcon });
+      marker10.bindPopup("<b>Faunaland Ancol</b><br>Alamat: Ecovention Building - Ecopark, Jl. Lodan Raya, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker10.addTo(map);
+      marker10.bindTooltip("Faunaland Ancol");
+
+      // Marker 11
+      var marker11 = L.marker([-6.1253124, 106.8335377], { icon: customIcon });
+      marker11.bindPopup("<b>Dufan Ancol</b><br>Alamat: Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker11.addTo(map);
+      marker11.bindTooltip("Dufan Ancol");
+
+      // Marker 12
+      var marker12 = L.marker([-6.1257185, 106.836356], { icon: customIcon });
+      marker12.bindPopup("<b>Allianz Eco Park</b><br>Alamat: Jl. Lodan Timur No.7, RW.10, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker12.addTo(map);
+      marker12.bindTooltip("Allianz Eco Park");
+
+      // Marker 13
+      var marker13 = L.marker([-6.1173332, 106.8579951], { icon: customIcon });
+      marker13.bindPopup("<b>Taman Impian Jaya Ancol</b><br>Alamat: VVM5+359, Ancol, Pademangan, North Jakarta City, Jakarta 14430, Indonesia");
+      marker13.addTo(map);
+      marker13.bindTooltip("Taman Impian Jaya Ancol");
+
+      // Marker 14
+      var marker14 = L.marker([-6.093495, 106.7395843], { icon: customIcon });
+      marker14.bindPopup("<b>San Antonio Beach PIK 2</b><br>Alamat: WP4Q+JR4, Kamal Muara, North Jakarta City, Jakarta, Indonesia");
+      marker14.addTo(map);
+      marker14.bindTooltip("San Antonio Beach PIK 2");
+
+      // Marker 15
+      var marker15 = L.marker([-6.1350687, 106.8136795], { icon: customIcon });
+      marker15.bindPopup("<b>Wisata Kota Tua Jakarta</b><br>Alamat: Kawasan Kota Tua, Taman Fatahillah No.1 7, RT.7/RW.7, Pinangsia, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11110, Indonesia");
+      marker15.addTo(map);
+      marker15.bindTooltip("Wisata Kota Tua Jakarta");
+
+      // Marker 16
+      var marker16 = L.marker([-6.1160075, 106.7692016], { icon: customIcon });
+      marker16.bindPopup("<b>Muara Angke Wildlife Refuge</b><br>Alamat: 1, RT.1/RW.16, Kapuk Muara, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14460, Indonesia");
+      marker16.addTo(map);
+      marker16.bindTooltip("Muara Angke Wildlife Refuge");
+
+      // Marker 17
+      var marker17 = L.marker([-6.1600242, 106.90388], { icon: customIcon });
+      marker17.bindPopup("<b>Jogging Park 1 Kelapa Gading</b><br>Alamat: Jalan Raya Boulevard Blok. GT 3, Kelapa Gading, RT.18/RW.16, Klp. Gading Tim., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240, Indonesia");
+      marker17.addTo(map);
+      marker17.bindTooltip("Jogging Park 1 Kelapa Gading");
+
+      // Marker 18
+      var marker18 = L.marker([-6.122041, 106.9053861], { icon: customIcon });
+      marker18.bindPopup("<b>Taman Walang Baru</b><br>Alamat: Jl. Walang Baru Raya, RT.2/RW.15, Tugu Utara, Kec. Koja, Jkt Utara, Daerah Khusus Ibukota Jakarta 14260, Indonesia");
+      marker18.addTo(map);
+      marker18.bindTooltip("Taman Walang Baru");
+
+      // Marker 19
+      var marker19 = L.marker([-6.0969781, 106.9588443], { icon: customIcon });
+      marker19.bindPopup("<b>Museum Kebaharian Jakarta Rumah Si Pitung</b><br>Alamat: Jl. Kampung Marunda Pulo, 2, RT.2/RW.7, Marunda, Kec. Cilincing, Jkt Utara, Daerah Khusus Ibukota Jakarta 14150, Indonesia");
+      marker19.addTo(map);
+      marker19.bindTooltip("Museum Kebaharian Jakarta Rumah Si Pitung");
+
+      // Marker 20
+      var marker20 = L.marker([-6.1217534, 106.7544428], { icon: customIcon });
+      marker20.bindPopup("<b>Mangrove PIK</b><br>Alamat: VQH3+6RM, RT.7/RW.7, Kapuk Muara, Penjaringan, North Jakarta City, Jakarta 14460, Indonesia");
+      marker20.addTo(map);
+      marker20.bindTooltip("Mangrove PIK");
+
+      // Marker 21
+      var marker21 = L.marker([-6.1220799, 106.7609549], { icon: customIcon });
+      marker21.bindPopup("<b>Mangrove Ecotourism Centre PIK</b><br>Alamat: 7 Jalan Katamaran Indah 1 RT.7, RT.1/RW.7, Kapuk Muara, Kec. Penjaringan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14460, Indonesia");
+      marker21.addTo(map);
+      marker21.bindTooltip("Mangrove Ecotourism Centre PIK");
+
+      // Marker 22
+      var marker22 = L.marker([-6.1457784, 106.8764635], { icon: customIcon });
+      marker22.bindPopup("<b>Taman Danau Sunter</b><br>Alamat: VV3G+MHP, RT.11/RW.11, Sunter Jaya, Tanjung Priok, North Jakarta City, Jakarta 14360, Indonesia");
+      marker22.addTo(map);
+      marker22.bindTooltip("Taman Danau Sunter");
+
+      // Marker 23
+      var marker23 = L.marker([-6.199387, 106.8326333], { icon: customIcon });
+      marker23.bindPopup("<b>Suropati Park</b><br>Alamat: Jl. Taman Suropati No.5, RT.5/RW.5, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310, Indonesia");
+      marker23.addTo(map);
+      marker23.bindTooltip("Suropati Park");
+
+      // Marker 24
+      var marker24 = L.marker([-6.12419, 106.839134], { icon: customIcon });
+      marker24.bindPopup("<b>Atlantis Water Adventures Ancol</b><br>Alamat: Jl. Lodan Timur, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker24.addTo(map);
+      marker24.bindTooltip("Atlantis Water Adventures Ancol");
+
+      // Marker 25
+      var marker25 = L.marker([-6.1088374, 106.9697762], { icon: customIcon });
+      marker25.bindPopup("<b>Wisata Pemancingan Tarumanegara</b><br>Alamat: Jl. Pinggir Dermaga No.6, RT.6/RW.1, Marunda, Kec. Cilincing, Jkt Utara, Daerah Khusus Ibukota Jakarta 14150, Indonesia");
+      marker25.addTo(map);
+      marker25.bindTooltip("Wisata Pemancingan Tarumanegara");
+
+      // Marker 26
+      var marker26 = L.marker([-6.1477623, 106.8962366], { icon: customIcon });
+      marker26.bindPopup(
+        "<b>Bounce Street Asia - Trampoline Park</b><br>Alamat: sentra bisnis, Jalan, Jl. Artha Gading Sel. No.Kav 8 Blok B, RT.18/RW.8, Klp. Gading Bar., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240, Indonesia"
+      );
+      marker26.addTo(map);
+      marker26.bindTooltip("Bounce Street Asia - Trampoline Park");
+
+      // Marker 27
+      var marker27 = L.marker([-6.126601, 106.842958], { icon: customIcon });
+      marker27.bindPopup("<b>Sea World Asia</b><br>Alamat:Jl. Lodan timur No.7, RT.14/RW.10, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker27.addTo(map);
+      marker27.bindTooltip("Sea World Ancol");
+
+      // Marker 28
+      var marker28 = L.marker([-6.12650109999999, 106.8429718], { icon: customIcon });
+      marker28.bindPopup("<b>Jakarta Bird Land</b><br>Alamat: Jl. Lodan timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker28.addTo(map);
+      marker28.bindTooltip("Jakarta Bird Land");
+
+      // Marker 29
+      var marker29 = L.marker([-6.1243948, 106.8376908], { icon: customIcon });
+      marker29.bindPopup("<b>Ancol Learning Farm (Bertani)</b><br>Alamat: RW.10, Ancol, Pademangan, RW.10, Ancol, Jakarta Utara, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430, Indonesia");
+      marker29.addTo(map);
+      marker29.bindTooltip("Ancol Learning Farm (Bertani)");
+
+      // Marker 30
+      var marker30 = L.marker([-6.0890717, 106.7419587], { icon: customIcon });
+      marker30.bindPopup("<b>Pagoda @ PIK 2 Pantjoran Chinatown</b><br>Alamat: WP6R+8R3, Pantai Indah Kapuk St, RT.7/RW.2, Kamal Muara, North Jakarta City, Jakarta 14460, Indonesia");
+      marker30.addTo(map);
+      marker30.bindTooltip("Pagoda @ PIK 2 Pantjoran Chinatown");
+    </script>
+  </body>
+</html>
